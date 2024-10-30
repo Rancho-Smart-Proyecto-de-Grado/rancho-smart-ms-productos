@@ -38,6 +38,9 @@ public class Producto {
     @Column(name = "FECHA_REGISTRO")
     private LocalDateTime fechaRegistro;
 
+    @Column(name = "FOTO")
+    private byte[] foto;
+    
     public Producto() {
     }
 
@@ -50,6 +53,18 @@ public class Producto {
         this.precio = precio;
         this.cantidad = cantidad;
         this.fechaRegistro = fechaRegistro;
+    }
+
+    public Producto(Long idFinca, Long idUsuario, String nombre, String descripcion, Double precio, Integer cantidad,
+            LocalDateTime fechaRegistro, byte[] foto) {
+        this.idFinca = idFinca;
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.cantidad = cantidad;
+        this.fechaRegistro = fechaRegistro;
+        this.foto = foto;
     }
 
     public Long getIdProducto() {
@@ -114,6 +129,14 @@ public class Producto {
 
     public void setFechaRegistro(LocalDateTime fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
+    }
+
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
     }
 
     
