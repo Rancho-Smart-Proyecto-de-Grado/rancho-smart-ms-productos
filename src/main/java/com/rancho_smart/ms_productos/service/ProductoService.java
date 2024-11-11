@@ -18,6 +18,14 @@ public class ProductoService {
         return productoRepository.findAll();
     }
 
+    public List<Producto> obtenerProductosPorIdFinca(Long idFinca){
+        return this.productoRepository.findByIdFinca(idFinca);
+    }
+
+    public List<Producto> obtenerProductosPorIdUsuario(Long idUsuario){
+        return this.productoRepository.findByIdUsuario(idUsuario);
+    }
+
     public Optional<Producto> obtenerPorId(Long idProducto) {
         return productoRepository.findById(idProducto);
     }

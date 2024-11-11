@@ -30,6 +30,26 @@ public class MedicamentoRESTController {
                           .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/finca/{idFinca}")
+    public ResponseEntity<List<Medicamento>> getMedicamentosByIdFinca(@PathVariable Long idFinca){
+        List<Medicamento> medicamentosFinca = this.medicamentoService.obtenerMedicamentosPorIdFinca(idFinca);
+        if(medicamentosFinca.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(medicamentosFinca, HttpStatus.OK);
+        }
+    }
+
+    @GetMapping("/usuario/{idUsuario}")
+    public ResponseEntity<List<Medicamento>> getMedicamentosByIdUsuario(@PathVariable Long idUsuario){
+        List<Medicamento> medicamentosUsuario = this.medicamentoService.obtenerMedicamentosPorIdUsuario(idUsuario);
+        if(medicamentosUsuario.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(medicamentosUsuario, HttpStatus.OK);
+        }
+    }
+
     @PostMapping
     public ResponseEntity<Medicamento> saveMedicamento(@RequestBody Medicamento medicamento) {
         Medicamento medicamentoCreado = medicamentoService.guardarMedicamento(medicamento);

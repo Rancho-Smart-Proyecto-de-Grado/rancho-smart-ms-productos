@@ -38,6 +38,26 @@ public class ProductoRESTController {
                        .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/finca/{idFinca}")
+    public ResponseEntity<List<Producto>> getProductoByIdFinca(@PathVariable Long idFinca){
+        List<Producto> productosFinca = this.productoService.obtenerProductosPorIdFinca(idFinca);
+        if(productosFinca.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(productosFinca, HttpStatus.OK);
+        }
+    }
+
+    @GetMapping("/usuario/{idUsuario}")
+    public ResponseEntity<List<Producto>> getProductosByIdUsuario(@PathVariable Long idUsuario){
+        List<Producto> productosUsuario = this.productoService.obtenerProductosPorIdUsuario(idUsuario);
+        if(productosUsuario.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(productosUsuario, HttpStatus.OK);
+        }
+    }
+
     @PostMapping
     public ResponseEntity<Producto> saveProducto(@RequestBody Producto producto) {
         Producto productoCreado = this.productoService.guardarProducto(producto);

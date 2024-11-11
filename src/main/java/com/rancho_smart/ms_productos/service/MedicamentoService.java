@@ -18,6 +18,14 @@ public class MedicamentoService {
         return medicamentoRepository.findAll();
     }
 
+    public List<Medicamento> obtenerMedicamentosPorIdFinca(Long idFinca){
+        return this.medicamentoRepository.findByIdFinca(idFinca);
+    }
+
+    public List<Medicamento> obtenerMedicamentosPorIdUsuario(Long idUsuario){
+        return this.medicamentoRepository.findByIdUsuario(idUsuario);
+    }
+
     public Optional<Medicamento> obtenerPorId(Long idMedicamento) {
         return medicamentoRepository.findById(idMedicamento);
     }
